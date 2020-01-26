@@ -1,16 +1,17 @@
-#Enable remote state storage
+
 provider "aws" {
   region = "us-east-2"
 }
 
 #create S3 bucket
-resource "aws_s3_bucket" "terraform-state" {
+resource "aws_s3_bucket" "terraform_state" {
   bucket = "a-terraform-state-s3"
 
   #Prevent accidental deletion of this S3 bucket
-  lifecycle {
-      prevent_destroy = true
-  }
+  # lifecycle { 
+  #     prevent_destroy = true
+  # }
+  force_destroy = true
 
   #Enable versioning so we can see the full revision history of our state files
   versioning {
@@ -37,16 +38,3 @@ resource "aws_dynamodb_table" "terraform_locks" {
       type = "S"
   }
 }
-
-# terraform {
-#     backend "s3" {
-#         bucket = "a-terraform-state-s3"
-#         key = "global/s3/terraform.tfstate"
-#         region = "us-east-2"
-
-#         dynamodb_table = "my-terraform-locks-dynamoDB"
-#         encrypt = true
-#     }
-# }
-
-
