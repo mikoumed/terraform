@@ -11,6 +11,7 @@ resource "aws_s3_bucket" "terraform_state" {
   # lifecycle { 
   #     prevent_destroy = true
   # }
+  force_destroy = true
 
   #Enable versioning so we can see the full revision history of our state files
   versioning {
