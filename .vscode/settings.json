@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "**/*.tfstate": true,
+        "**/*.tfstate.backup": true
+    }
+}

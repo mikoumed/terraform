@@ -19,3 +19,7 @@ variable "db_remote_state_key" {
     type = string
 }
 
+variable "webserver_remote_state_key" {
+    description = "The path for the webserver's remote state in S3"
+    type = string
+}
